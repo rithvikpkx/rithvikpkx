@@ -20,6 +20,8 @@ Here are some ideas to get you started:
 
 **CS + Mathematics @ Purdue University | Greater Boston**
 
+Building intelligent software with real impact.
+
 # 💼 Current Work
 
  ◆ **Software Developer, Hack the Future at Purdue**
