@@ -97,3 +97,8 @@ Building intelligent software with real impact.
  - Building technology with practical and social impact
 
  - Teaching programming
+
+
+# 📞 Reach Me
+ - [LinkedIn](https://www.linkedin.com/in/rithvik-praveen-kumar/)
+ - [Email](mailto:rithvikpkx@gmail.com)
