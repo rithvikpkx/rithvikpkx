@@ -1,46 +1,39 @@
-<!--
-## Hi there 👋
-
-
-**rithvikpkx/rithvikpkx** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
-
 # Hi, I'm Rithvik 👋
 
 **CS + Mathematics @ Purdue University | Greater Boston**
 
 Building intelligent software with real impact.
 
-# 💼 Current Work
+[rithvik.ai](https://rithvik.ai)
+
+
+# 💼 Previous Work
 
  ◆ **Software Developer, Hack the Future at Purdue**
 
    - Built a full-stack, AI-powered learning platform for a not-for-profit organization
 
-   - Platform now used by 500+ underserved learners
+   - Scaled to 500+ underserved learners
 
-   - Built frontend UI, backend logic, and a context-aware RAG-based AI chatbot using vectorized content retrieval 
+   - Built the frontend UI, backend logic, and a context-aware RAG chatbot using vectorized content retrieval
 
-   - Worked directly with stakeholders to turn non-technical product needs into shipped features 
+   - Worked directly with stakeholders to turn non-technical product needs into shipped features
 
- ◆ **Undergraduate Researcher, Snowball Lab at Purdue**
 
-   - Researching TinyML and edge inference for low-power embedded devices 
 
-   - Training and deploying lightweight ML models 
+# 🚀 Featured Projects
 
-   - Studying tradeoffs between performance, power, and hardware constraints 
+ ◆ **Mind-Controlled Robotic Arm**
+
+   - Robotic arm actuated in real time from raw EEG signals
+
+   - End-to-end pipeline: headset capture → signal processing → thought classification → Arduino-driven motion
+
+ ◆ **AI Facial Recognition Web App**
+
+   - Full-stack web app doing face detection and recognition in the browser
+
+   - Trained model served behind an API, wired to a React frontend
 
 
 
@@ -76,20 +69,6 @@ Building intelligent software with real impact.
 
  
 
-# 🚀 Projects
-
- - AI learning platform for nonprofit education 
-
- - AI-driven facial recognition web app 
-
- - Mind-controlled robotic arm using EEG signals 
-
- - EEG thought-classification AI research project 
-
- - Nonprofit e-commerce automation tools 
-
-
-
 # ☕️ Beyond the Code
 
  - Collaborating across technical and non-technical teams 
@@ -100,5 +79,6 @@ Building intelligent software with real impact.
 
 
 # 📞 Reach Me
+ - [Website](https://rithvik.ai)
  - [LinkedIn](https://www.linkedin.com/in/rithvik-praveen-kumar/)
  - [Email](mailto:rithvikpkx@gmail.com)
