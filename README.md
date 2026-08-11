@@ -33,7 +33,7 @@ Building intelligent software with real impact.
 
    - Full-stack web app doing face detection and recognition in the browser
 
-   - Trained model served behind an API, wired to a React frontend
+   - Facial recognition model from AWS Rekognition, wired to a React frontend
 
 
 
