@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1195" height="296" viewBox="0 0 1195 296" role="img" aria-label="Terminal window: ls -1 projects/">
+  <defs>
+    <linearGradient id="term-projects-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#111722"/>
+      <stop offset="1" stop-color="#0b0e14"/>
+    </linearGradient>
+  </defs>
+  <rect x="0.5" y="0.5" width="1194" height="295" rx="12" fill="url(#term-projects-bg)" stroke="#2a3038"/>
+  <rect x="0.5" y="34" width="1194" height="1" fill="#2a3038"/>
+  <circle cx="22" cy="17.5" r="6" fill="#ff5f56"/>
+  <circle cx="42" cy="17.5" r="6" fill="#ffbd2e"/>
+  <circle cx="62" cy="17.5" r="6" fill="#27c93f"/>
+  <text x="597.5" y="22" text-anchor="middle" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#8b949e">~/rithvikpkx</text>
+  <text xml:space="preserve" x="24" y="64" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17"><tspan fill="#79c0ff">~/rithvikpkx</tspan><tspan fill="#7ee787"> $ </tspan><tspan fill="#c9d1d9">ls -1 projects/</tspan></text>
+  <text xml:space="preserve" x="24" y="116" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17" fill="#c9d1d9">mind-controlled-robotic-arm/</text>
+  <text xml:space="preserve" x="24" y="142" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17" fill="#c9d1d9">  robotic arm actuated in real time from raw EEG signals</text>
+  <text xml:space="preserve" x="24" y="168" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17" fill="#c9d1d9">  headset capture -&gt; signal processing -&gt; classification -&gt; Arduino motion</text>
+  <text xml:space="preserve" x="24" y="220" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17" fill="#c9d1d9">ai-facial-recognition-web-app/</text>
+  <text xml:space="preserve" x="24" y="246" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17" fill="#c9d1d9">  face detection and recognition in the browser</text>
+  <text xml:space="preserve" x="24" y="272" font-family="ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace" font-size="17" fill="#c9d1d9">  AWS Rekognition model wired to a React frontend</text>
+</svg>
