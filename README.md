@@ -1,13 +1,26 @@
-# Hi, I'm Rithvik 👋
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="https://www.gitskins.com/api/section/hero?username=rithvikpkx&theme=midnight&mode=light" />
+    <img src="https://www.gitskins.com/api/section/hero?username=rithvikpkx&theme=midnight&mode=dark" width="100%" alt="Rithvik Praveen Kumar — CS + Mathematics @ Purdue University" />
+  </picture>
+</p>
 
-**CS + Mathematics @ Purdue University | Greater Boston**
+<p align="center">
+  <b>Greater Boston</b> &nbsp;·&nbsp; Building intelligent software with real impact.
+  <br />
+  <a href="https://rithvik.ai"><b>rithvik.ai</b></a>
+</p>
 
-Building intelligent software with real impact.
+<p align="center">
+  <img src="https://www.gitskins.com/api/section/stats?username=rithvikpkx&theme=midnight" width="100%" alt="Live GitHub stats for rithvikpkx" />
+</p>
 
-[rithvik.ai](https://rithvik.ai)
+<p align="center">
+  <img src="https://www.gitskins.com/api/section/stack?username=rithvikpkx&theme=midnight" width="100%" alt="Live language stack for rithvikpkx" />
+</p>
 
 
-# 💼 Previous Work
+## 💼 Previous Work
 
  ◆ **Software Developer, Hack the Future at Purdue**
 
@@ -20,8 +33,7 @@ Building intelligent software with real impact.
    - Worked directly with stakeholders to turn non-technical product needs into shipped features
 
 
-
-# 🚀 Featured Projects
+## 🚀 Featured Projects
 
  ◆ **Mind-Controlled Robotic Arm**
 
@@ -35,9 +47,12 @@ Building intelligent software with real impact.
 
    - Trained model served behind an API, wired to a React frontend
 
+<p align="center">
+  <img src="https://www.gitskins.com/api/section/projects?username=rithvikpkx&theme=midnight" width="100%" alt="Pinned repositories for rithvikpkx" />
+</p>
 
 
-# 🛠 Technical Skills
+## 🛠 Technical Skills
 
  - **Languages:** Python, Java, C, JavaScript, R, C# 
 
@@ -52,8 +67,7 @@ Building intelligent software with real impact.
  - **Platforms:** AWS, Kubernetes
 
 
-
-# 💻 Technical Interests
+## 💻 Technical Interests
 
    - Full-stack development
 
@@ -67,9 +81,8 @@ Building intelligent software with real impact.
 
    - Real-world product building
 
- 
 
-# ☕️ Beyond the Code
+## ☕️ Beyond the Code
 
  - Collaborating across technical and non-technical teams 
 
@@ -78,7 +91,8 @@ Building intelligent software with real impact.
  - Teaching programming
 
 
-# 📞 Reach Me
+## 📞 Reach Me
+
  - [Website](https://rithvik.ai)
  - [LinkedIn](https://www.linkedin.com/in/rithvik-praveen-kumar/)
  - [Email](mailto:rithvikpkx@gmail.com)
