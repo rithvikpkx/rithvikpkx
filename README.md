@@ -1,3 +1,5 @@
+<img src="https://komarev.com/ghpvc/?username=rithvikpkx&label=Profile%20views&color=475569&style=flat" alt="Profile views" />
+
 <p align="center">
   <img src="https://www.gitskins.com/api/section/wordmark?username=rithvikpkx&theme=midnight&label=Rithvik" width="100%" alt="Rithvik" />
 </p>
