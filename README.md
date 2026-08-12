@@ -45,7 +45,7 @@
 
    - Full-stack web app doing face detection and recognition in the browser
 
-   - Trained model served behind an API, wired to a React frontend
+   - Facial recognition model from AWS Rekognition, wired to a React frontend
 
 <p align="center">
   <img src="https://www.gitskins.com/api/section/projects?username=rithvikpkx&theme=midnight" width="100%" alt="Pinned repositories for rithvikpkx" />
