@@ -1,7 +1,7 @@
 <img src="https://komarev.com/ghpvc/?username=rithvikpkx&label=Profile%20views&color=475569&style=flat" alt="Profile views" />
 
 <p align="center">
-  <img src="https://www.gitskins.com/api/section/wordmark?username=rithvikpkx&theme=midnight&label=Rithvik" width="100%" alt="Rithvik" />
+  <img src="assets/wordmark.svg" width="100%" alt="Rithvik" />
 </p>
 
 <p align="center">
@@ -26,7 +26,7 @@
 <img src="assets/terminal-projects.svg" width="100%" alt="mind-controlled-robotic-arm: robotic arm actuated in real time from raw EEG signals; headset capture to signal processing to classification to Arduino motion. ai-facial-recognition-web-app: face detection and recognition in the browser; AWS Rekognition model wired to a React frontend." />
 
 <p align="center">
-  <img src="https://www.gitskins.com/api/section/projects?username=rithvikpkx&theme=midnight" width="100%" alt="Pinned repositories for rithvikpkx" />
+  <img src="assets/pinned-projects.svg" width="100%" alt="Pinned repositories for rithvikpkx" />
 </p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0F172A,100:475569&height=100&section=header&text=Technical%20Skills&fontColor=F8FAFC&fontSize=32&fontAlignY=34&animation=fadeIn" width="100%" alt="Technical Skills" />
