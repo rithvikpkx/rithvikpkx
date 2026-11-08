@@ -24,7 +24,6 @@ import * as SI from 'simple-icons';
 // Colours that make the important bits pop. Brand hues, lifted where the official one is too dark
 // to read on the #0c0c0c terminal.
 const K = {
-  purdue: '#daaa00',   // Purdue "Rush" gold
   python: '#5a9fd4', ts: '#3178c6', java: '#e5534b', cpp: '#f34b7d', react: '#61dafb', aws: '#ff9900',
   ai: '#c4a7ff', ml: '#4fd1c5', bci: '#f78fb3',
   linkedin: '#4f9be0', gmail: '#ea4335', ok: '#5ad08a',
@@ -46,8 +45,8 @@ const HERO = {
   // Right column of the welcome panel, top to bottom. { rule } is a divider, { gap } a small space.
   right: [
     { h: 'About' },
-    { p: [{ t: 'CS + Math', c: 'ink', b: true }, { t: ' @ ', c: 'dim' }, { t: 'Purdue', c: K.purdue, b: true }, '.'] },
-    { p: ['Builds ', { t: 'intelligent software', c: 'acc' }, ' for an intelligent world.'] },
+    { p: [{ t: 'CS + Math', c: 'ink', b: true }, { t: ' @ ', c: 'dim' }, { t: 'Purdue', c: 'acc', b: true }, '.'] },
+    { p: 'Builds intelligent software for an intelligent world.' },
     { rule: true },
     { h: 'Stack' },
     { p: [...tech(SI.siPython, 'Python', K.python), '  ', ...tech(SI.siTypescript, 'TypeScript', K.ts), '  ', ...tech(SI.siOpenjdk, 'Java', K.java), '  ',
