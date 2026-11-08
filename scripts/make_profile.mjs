@@ -17,8 +17,24 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import opentype from 'opentype.js';
 import subsetFont from 'subset-font';
+import * as SI from 'simple-icons';
 
 /* ================================================================== content */
+
+// Colours that make the important bits pop. Brand hues, lifted where the official one is too dark
+// to read on the #0c0c0c terminal.
+const K = {
+  purdue: '#daaa00',   // Purdue "Rush" gold
+  python: '#5a9fd4', ts: '#3178c6', java: '#e5534b', cpp: '#f34b7d', react: '#61dafb', aws: '#ff9900',
+  ai: '#c4a7ff', ml: '#4fd1c5', bci: '#f78fb3',
+  linkedin: '#4f9be0', gmail: '#ea4335', ok: '#5ad08a',
+};
+// Lines in the panel can be a plain string or a list of segments:
+//   'text'                 plain, in the line's colour
+//   { t, c, b }            coloured text, b for bold
+//   { icon, c }            a Simple Icons logo, drawn in colour c
+const dot = { t: ' · ', c: 'dim' };
+const tech = (icon, name, c) => [{ icon, c }, { t: name, c }];
 
 const HERO = {
   title: '~/rithvikpkx',
@@ -30,14 +46,15 @@ const HERO = {
   // Right column of the welcome panel, top to bottom. { rule } is a divider, { gap } a small space.
   right: [
     { h: 'About' },
-    { p: 'CS + Math @ Purdue.' },
-    { p: 'Builds intelligent software for an intelligent world.' },
+    { p: [{ t: 'CS + Math', c: 'ink', b: true }, { t: ' @ ', c: 'dim' }, { t: 'Purdue', c: K.purdue, b: true }, '.'] },
+    { p: ['Builds ', { t: 'intelligent software', c: 'acc' }, ' for an intelligent world.'] },
     { rule: true },
     { h: 'Stack' },
-    { p: 'Python · TypeScript · Java · C++ · React · AWS' },
+    { p: [...tech(SI.siPython, 'Python', K.python), '  ', ...tech(SI.siTypescript, 'TypeScript', K.ts), '  ', ...tech(SI.siOpenjdk, 'Java', K.java), '  ',
+      ...tech(SI.siCplusplus, 'C++', K.cpp), '  ', ...tech(SI.siReact, 'React', K.react), '  ', ...tech(SI.siAmazonwebservices, 'AWS', K.aws)] },
     { gap: true },
     { h: 'Into' },
-    { p: 'AI systems · applied ML · brain-computer interfaces' },
+    { p: [{ t: 'AI systems', c: K.ai }, dot, { t: 'applied ML', c: K.ml }, dot, { t: 'brain-computer interfaces', c: K.bci }] },
   ],
   suggestion: 'Try "open rithvik.ai"',
   hintLeft: '? for shortcuts',
@@ -47,7 +64,7 @@ const HERO = {
 const SITE = {
   tool: 'Fetch',
   url: 'https://rithvik.ai',
-  result: "200 OK · projects, experience and what I'm building now",
+  result: [{ t: '200 OK', c: K.ok, b: true }, dot, "projects, experience and what I'm building now"],
   blocks: 'rithvik.ai',
   enter: 'open',
 };
@@ -57,8 +74,8 @@ const CONTACT = {
   hint: 'where to reach me · ↑↓ to move · enter to open',
   rows: [
     { file: 'contact-website.svg', label: '1. Website', value: 'rithvik.ai', on: true },
-    { file: 'contact-linkedin.svg', label: '2. LinkedIn', value: 'in/rithvik-praveen-kumar' },
-    { file: 'contact-email.svg', label: '3. Email', value: 'rithvikpkx@gmail.com' },
+    { file: 'contact-linkedin.svg', label: '2. LinkedIn', value: 'in/rithvik-praveen-kumar', icon: SI.siLinkedin, c: K.linkedin },
+    { file: 'contact-email.svg', label: '3. Email', value: 'rithvikpkx@gmail.com', icon: SI.siGmail, c: K.gmail },
   ],
 };
 
@@ -127,6 +144,32 @@ function doc() {
     note(s, w);
     return `<text x="${n2(x)}" y="${n2(y)}" class="${cls}${w === 700 ? ' b' : ''}"${size !== 13 ? ` style="font-size:${size}px"` : ''}${anchor ? ` text-anchor="${anchor}"` : ''}${extra}>${esc(s)}</text>`;
   };
+  // A line of segments. Monospace, so x advances by ADV per character; logos take one cell plus a gap.
+  const ICON_W = (size) => size * 1.0, ICON_GAP = (size) => size * 0.45;
+  const fill = (c) => (c && c.startsWith('#')) ? ` fill="${c}"` : '';
+  const klass = (c, base) => (c && !c.startsWith('#')) ? c : base;
+  const rich = (x, y, segs, { cls = 'soft', size = 13 } = {}) => {
+    if (!Array.isArray(segs)) return text(x, y, segs, { cls, size });
+    let out = '', cx = x;
+    for (const seg of segs) {
+      const g = typeof seg === 'string' ? { t: seg } : seg;
+      if (g.icon) {
+        const s = ICON_W(size), k = s / 24, top = y - size * 0.36 - s / 2;
+        out += `<path transform="translate(${n2(cx)} ${n2(top)}) scale(${n2(k)})" d="${g.icon.path}"${fill(g.c) || ` class="${klass(g.c, cls)}"`}/>`;
+        cx += s + ICON_GAP(size);
+        continue;
+      }
+      const w = g.b ? 700 : 500;
+      note(g.t, w);
+      // A hex colour goes in style (a class colour would beat a fill attribute); otherwise use the class.
+      const st = [g.c && g.c.startsWith('#') ? `fill:${g.c}` : '', size !== 13 ? `font-size:${size}px` : ''].filter(Boolean).join(';');
+      const cl = [g.c && g.c.startsWith('#') ? '' : klass(g.c, cls), w === 700 ? 'b' : ''].filter(Boolean).join(' ');
+      out += `<text x="${n2(cx)}" y="${n2(y)}"${cl ? ` class="${cl}"` : ''}${st ? ` style="${st}"` : ''}>${esc(g.t)}</text>`;
+      cx += g.t.length * ADV * size;
+    }
+    return out;
+  };
+  const plain = (segs) => Array.isArray(segs) ? segs.map((g) => typeof g === 'string' ? g : (g.t ?? '')).join('') : segs;
   async function fonts() {
     let css = '';
     for (const w of [500, 700]) {
@@ -136,7 +179,7 @@ function doc() {
     }
     return css;
   }
-  return { text, note, fonts };
+  return { text, rich, plain, note, fonts };
 }
 
 const BASE_CSS = `text{font-family:GM,ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:500;white-space:pre;font-kerning:none;font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
@@ -448,7 +491,7 @@ ${T(W / 2, base(6, 18, 12), HERO.title, { cls: 'dim', size: 12, anchor: 'middle'
   });
   css.push(`.ou text{font-size:8px}.of{opacity:0;animation:of ${OURO_TURN}s step-end infinite}.of.f0{opacity:1}@keyframes of{0%{opacity:1}${(100 / OURO_FRAMES).toFixed(3)}%{opacity:0}100%{opacity:0}}`);
   body += `\n<g ${fx(2.5)}><g class="ou" transform="translate(${n2(colX - ouroW / 2)} ${n2(top + nameLH + gap)})">${ouro}</g></g>`;
-  body += `\n<g ${fx(2.55)}>${T(colX, base(top + nameLH + gap + ouroH + gap, placeLH, 12.5), HERO.place, { cls: 'dim', size: 12.5, anchor: 'middle' })}</g>`;
+  body += `\n<g ${fx(2.55)}>${T(colX, base(top + nameLH + gap + ouroH + gap, placeLH, 12.5), HERO.place, { cls: 'soft', size: 12.5, anchor: 'middle' })}</g>`;
 
   // Divider.
   const dvX = P.x + 306 + 0.6, dvT = P.y + 22, dvB = P.y + P.h - 22;
@@ -464,7 +507,7 @@ ${T(W / 2, base(6, 18, 12), HERO.title, { cls: 'dim', size: 12, anchor: 'middle'
       y += 12; at += 0.05; continue;
     }
     if (item.gap) { y += 9; at += 0.05; continue; }
-    right += `<g ${fx(at.toFixed(2))}>${item.h ? T(RX, base(y, 20, 13), item.h, { cls: 'ink', w: 700 }) : T(RX, base(y, 20, 13), item.p)}</g>`;
+    right += `<g ${fx(at.toFixed(2))}>${item.h ? T(RX, base(y, 20, 13), item.h, { cls: 'ink', w: 700 }) : D.rich(RX, base(y, 20, 13), item.p)}</g>`;
     y += 20; at += 0.05;
   }
   body += `\n${right}`;
@@ -483,7 +526,7 @@ ${T(W / 2, base(6, 18, 12), HERO.title, { cls: 'dim', size: 12, anchor: 'middle'
   body += `\n<g ${fx(3.2)}>${T(38, hY, HERO.hintLeft, { cls: 'dim', size: 12 })}${T(W - 38, hY, HERO.hintRight, { cls: 'dim', size: 12, anchor: 'end' })}</g>`;
 
   const label = `A terminal styled like a coding agent CLI. The command "${HERO.command}" prints RITHVIK in rotating ASCII letters, then a welcome panel for ${HERO.name}, ${HERO.place}, with a turning ASCII ouroboros. `
-    + HERO.right.filter((r) => r.h || r.p).map((r) => r.h ? `${r.h}:` : r.p.replace(/ · /g, ', ').replace(/([^.])$/, '$1.')).join(' ');
+    + HERO.right.filter((r) => r.h || r.p).map((r) => r.h ? `${r.h}:` : D.plain(r.p).replace(/ {2,}/g, ' · ').replace(/ · /g, ', ').replace(/([^.])$/, '$1.')).join(' ');
   return svg({
     w: W, h: H, label, title: HERO.name,
     css: `${await D.fonts()}${BASE_CSS}${MOTION_CSS}${css.join('')}${REDUCED}`,
@@ -504,7 +547,7 @@ async function site() {
   // ⎿  200 OK · ...
   const y2 = base(42, 18, 13);
   // The mockup's fallback font drew ⎿ about two cells wide, then a non-breaking space and a space.
-  body += `\n${glyphCorner(30, y2, 13, C.dim)}${T(60, y2, SITE.result, { cls: 'dim' })}`;
+  body += `\n${glyphCorner(30, y2, 13, C.dim)}${D.rich(60, y2, SITE.result, { cls: 'dim' })}`;
 
   // The box with the block letters.
   const BX = 24, BY = 72, BW = 798, BH = 100;
@@ -547,7 +590,7 @@ async function site() {
 
   return svg({
     w: W, h: H,
-    label: `${SITE.tool} ${SITE.url}: ${SITE.result}. ${SITE.blocks} in square-pixel block letters with an amber glint passing over them. Opens ${SITE.url}.`,
+    label: `${SITE.tool} ${SITE.url}: ${D.plain(SITE.result)}. ${SITE.blocks} in square-pixel block letters with an amber glint passing over them. Opens ${SITE.url}.`,
     title: SITE.blocks,
     css: `${await D.fonts()}${BASE_CSS}${css.join('')}${REDUCED}`,
     body,
@@ -575,7 +618,8 @@ async function contactRow(row) {
   const y = base(19 - 9.75, 19.5, 13);
   let body = `<rect width="${W}" height="${H}" rx="8" fill="${C.bg}"/><rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="7.5" stroke="${C.edge}"/>`;
   if (row.on) body += glyphCaret(20, y, 13, C.acc);
-  body += T(42, y, row.label, { cls: row.on ? 'acc' : 'soft' }) + T(192, y, row.value, { cls: row.on ? 'acc' : 'dim' });
+  body += T(42, y, row.label, { cls: row.on ? 'acc' : 'soft' });
+  body += row.icon ? D.rich(192, y, [{ icon: row.icon, c: row.c }, { t: row.value, c: row.c }]) : T(192, y, row.value, { cls: row.on ? 'acc' : 'dim' });
   return svg({
     w: W, h: H, label: `${row.label}: ${row.value}${row.on ? ' (selected)' : ''}`, title: `${row.label.replace(/^\d+\.\s*/, '')}: ${row.value}`,
     css: `${await D.fonts()}${BASE_CSS}`, body,
